@@ -18,8 +18,8 @@ public class BaseTest {
 
     protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();//RemoteWebDriver
 
-    public String username = "enteryourusernamehere";
-    public String accesskey = "enteryourkeyhere";
+    public String username = "dummyselenium";
+    public String accesskey = "XXvorA2GX9LZtpesgC5VviyUG1xB8U00FO8xmmHYTPaMEk8yYY";
     public String gridURL = "@hub.lambdatest.com/wd/hub";
 
     boolean status = false;
@@ -34,8 +34,8 @@ public class BaseTest {
         capabilities.setCapability("browserName", browser);
         capabilities.setCapability("version", version);
         capabilities.setCapability("platform", platform);
-        capabilities.setCapability("build", "Selenium Grid");
-        capabilities.setCapability("name", "Sample Test");
+        capabilities.setCapability("build", "SeleniumCloud");
+        capabilities.setCapability("name", "WizardTests");
         capabilities.setCapability("network", true); // To enable network logs
         capabilities.setCapability("visual", true); // To enable step by step screenshot
         capabilities.setCapability("video", true); // To enable video recording
