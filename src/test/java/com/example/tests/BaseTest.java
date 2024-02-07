@@ -38,7 +38,7 @@ public class BaseTest {
     @AfterMethod
     public  void closeBrowser() {
 
-        ((JavascriptExecutor) driver).executeScript("lambda-status=" + status);
+        ((JavascriptExecutor) driver).executeScript("lambda-status=" + Boolean.toString(status));
 
         driver.quit();
 
