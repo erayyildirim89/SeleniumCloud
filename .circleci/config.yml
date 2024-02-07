@@ -23,7 +23,7 @@ jobs:
             find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
           when: always
 -     - store_test_results:
-            path: /home/circleci/test-results/junit/
+            path: ~/test-results/junit/
       - save_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
