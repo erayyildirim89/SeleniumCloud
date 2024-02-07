@@ -118,7 +118,6 @@ public class WidgetPage {
 
                 result = validationMessage.getText();
 
-
             }
             else if (check == CheckboxEnum.reject) {
 
