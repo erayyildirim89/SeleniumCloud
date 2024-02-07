@@ -79,7 +79,6 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
-          <reportsDirectory>${basedir}/home/circleci/project/target/surefire-reports</reportsDirectory>
           <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
