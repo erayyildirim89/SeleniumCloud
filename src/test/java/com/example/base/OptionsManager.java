@@ -14,7 +14,7 @@ public class OptionsManager {
         options.setPlatformName(platform);
         options.setBrowserVersion(version);
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("project", "Untitled");
+        ltOptions.put("project", "Pisano_Chrome");
         ltOptions.put("selenium_version","4.0.0");
         ltOptions.put("w3c", true);
         options.setCapability("LT:Options", ltOptions);
@@ -33,7 +33,7 @@ public class OptionsManager {
         options.setPlatformName(platform);
         options.setBrowserVersion(version);
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("project", "Untitled");
+        ltOptions.put("project", "Pisano_Firefox");
         ltOptions.put("selenium_version","4.0.0");
         ltOptions.put("w3c", true);
         options.setCapability("LT:Options", ltOptions);
@@ -52,7 +52,7 @@ public class OptionsManager {
         options.setPlatformName(platform);
         options.setBrowserVersion(version);
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("project", "Untitled");
+        ltOptions.put("project", "Pisano_Edge");
         ltOptions.put("selenium_version","4.0.0");
         ltOptions.put("w3c", true);
         options.setCapability("LT:Options", ltOptions);
