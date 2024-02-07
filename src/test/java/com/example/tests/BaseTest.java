@@ -1,12 +1,10 @@
 package com.example.tests;
 
+import com.example.base.CapabilityFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,58 +14,33 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();//RemoteWebDriver
-
-    public String username = "dummyselenium";
-    public String accesskey = "XXvorA2GX9LZtpesgC5VviyUG1xB8U00FO8xmmHYTPaMEk8yYY";
-    public String gridURL = "@hub.lambdatest.com/wd/hub";
-
+    protected RemoteWebDriver driver;
+    public CapabilityFactory capabilityFactory = new CapabilityFactory();
     boolean status = false;
-    public final static int TIMEOUT = 5;
-
+    public final static int TIMEOUT = 2;
 
     @BeforeMethod
     @Parameters(value={"browser","version","platform"})
-    public void setUp(String browser,String version,String platform) throws MalformedURLException {
+    public void setup(String browser,String version,String platform) throws MalformedURLException{
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", browser);
-        capabilities.setCapability("version", version);
-        capabilities.setCapability("platform", platform);
-        capabilities.setCapability("build", "SeleniumCloud");
-        capabilities.setCapability("name", "WizardTests");
-        capabilities.setCapability("network", true); // To enable network logs
-        capabilities.setCapability("visual", true); // To enable step by step screenshot
-        capabilities.setCapability("video", true); // To enable video recording
-        capabilities.setCapability("console", true); // To capture console logs
+        System.out.println("Browser: " +browser+ " started");
 
+        driver = new RemoteWebDriver(new URL("http://dummyselenium:JWjnYt82ldlZGdLMhrsRKIAtzjv7kYYBqYAuWfJ1jrxeDFSDPy@hub.lambdatest.com/wd/hub"), capabilityFactory.getCapabilities(browser,version,platform));
 
-        driver.set(new RemoteWebDriver(new URL("https://" + username + ":" + accesskey + gridURL), capabilities));
+        driver.get("https://stage.psn.cx/widget-preview?code=PSN-eh35zwa");
 
-        System.out.println("Browser Started : " + browser );
+        System.out.println("Go to widget page");
 
-        getDriver().get("https://stage.psn.cx/widget-preview?code=PSN-eh35zwa");
-
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT)); // implicit wait
-
-        getDriver().manage().window().maximize();
-    }
-
-
-    public WebDriver getDriver() {
-
-        return  driver.get();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
 
     }
 
     @AfterMethod
     public  void closeBrowser() {
 
-        driver.get().quit();
-
         ((JavascriptExecutor) driver).executeScript("lambda-status=" + status);
 
-        driver.remove();
+        driver.quit();
 
     }
 
