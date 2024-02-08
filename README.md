@@ -1,1 +1,11 @@
 # SeleniumCloud
+- On this project, the main objective is running tests parallel on cloud using lambda test.
+- Using Cırcle CI tool integration,pipeline operations are automatically triggered including test execution in every push.
+- Page classes are implemented using Page Factory design pattern.
+- WidgetPage is created for widget operations and Faker library is used for test data. 
+- BaseTest is created for inherit from other classes including before and after methods.
+- WidgetTest is created for test functions.
+- TESTNG is used for test structure (beforemethod, aftermethod, test), assertions and parallel test execution.
+- TESTNG.xml is defined for parallel test execution with different browsers, browser versions and platforms.
+- CapabilityFactory and OptionsManager classes are created for defining browser options.
+- With mvn clean test command, tests can be executed on lambda cloud environment or CIRCLE CI can be used.
