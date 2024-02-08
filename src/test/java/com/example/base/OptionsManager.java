@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.HashMap;
 
+//BROWSER OPTIONS IMPLEMENTATION
 public class OptionsManager {
 
     //Get Chrome Options

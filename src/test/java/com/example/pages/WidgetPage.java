@@ -13,6 +13,8 @@ public class WidgetPage {
 
     WebDriver driver;
 
+    //PAGE FACTORY ELEMENTS DEFINITION
+
     @FindBy(xpath="//div[@class='widget-button']")
     WebElement widgetBtn;
 
@@ -52,18 +54,20 @@ public class WidgetPage {
     @FindBy(xpath="//img[@src='https://cdn.jsdelivr.net/emojione/assets/3.1/png/64/1f642.png']")
     WebElement validationReject;
 
-
+    //SET DRIVER AND INIT ELEMENTS ON CONSTRUCTOR
     public WidgetPage(WebDriver driver)
     {
         this.driver= driver;
         //This initElements method will create all WebElements
         PageFactory.initElements(driver,this);
-
     }
 
+    //FILL WIDGET FORM
     public String fillWidget(CheckboxEnum check)
     {
             String result="";
+
+            //FAKE DATA USAGE WITH FAKER LIBRARY
 
             Faker faker = new Faker(Locale.forLanguageTag("en"));
 
@@ -80,6 +84,8 @@ public class WidgetPage {
             String phoneNumber  = "90" + faker.number().numberBetween(532,555) + faker.number().digits(7);
             //the upper method is used instead of faker.phoneNumber().cellPhone() to get better results
 
+            //IFRAME USAGE
+
             driver.switchTo().frame("psn-widget-button-frame");
 
             widgetBtn.click();
@@ -88,6 +94,8 @@ public class WidgetPage {
 
             driver.switchTo().frame("psn-widget-content-frame");
 
+            //FIND ELEMENTS USAGE WITH LIST
+
             List<WebElement> groupElements = driver.findElements(By.xpath("//div[@class='button-group']"));
             groupElements.get(0).findElement(By.xpath("//div[" + recommendation + "]")).click();
             groupElements.get(1).findElement(By.xpath("//div[" + emoji + "]/span/img")).click();
@@ -95,6 +103,8 @@ public class WidgetPage {
             nextPageBtn.click();
 
             commentTxt.sendKeys(comment);
+
+            //ENUM USAGE FOR CODE STABILITY
 
             if (check == CheckboxEnum.accept) {
                 acceptRadioBtn.click();
@@ -105,7 +115,6 @@ public class WidgetPage {
 
             pisanoCheckbox.click();
             othersCheckbox.click();
-
             nextPageBtn.click();
 
 
@@ -124,6 +133,7 @@ public class WidgetPage {
                 String searchFirstPage;
 
                 try {
+                 //SELENIUM GET ATTRIBUTE USAGE
                     validationReject.getAttribute("class");
                     searchFirstPage = "Returned to first page";
                 } catch (Exception ex) {

@@ -5,6 +5,8 @@ public class CapabilityFactory
 {
 
     public Capabilities capabilities;
+
+    //GET CAPABILITIES FOR DIFFERENT BROWSERS
     public Capabilities getCapabilities (String browser,String version,String platform) {
 
         switch (browser) {
